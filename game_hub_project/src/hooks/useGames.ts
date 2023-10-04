@@ -2,10 +2,17 @@ import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 import CanceledError from "axios"
 
+interface platform {
+    id: number;
+    name: string;
+    slug: string;
+}
+
 interface Game {
     id: number;
     name: string;
     background_image:  string;
+    parent_platforms: { platform: platform }[];
   }
   
   interface FetchGames {
@@ -30,10 +37,12 @@ const useGames = () => {
     return () => controller.abort();
   }, []);
 
+  (error === "canceled" ? setError("") : error)
+
   return {games, error}
 }
 
-export {type Game, type FetchGames};
+export {type platform, type Game, type FetchGames};
 
 export default useGames;
 
