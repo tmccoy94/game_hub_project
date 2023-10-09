@@ -8,8 +8,10 @@ import {
   AspectRatio,
   Text,
   list,
+  HStack,
 } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
+import MetacriticScore from "./MetacriticScore";
 
 interface Props {
   game: Game;
@@ -22,9 +24,12 @@ const GameCard = ({ game }: Props) => {
 
       <CardBody height={["5%"]}>
         <Heading fontSize="2xl">{game.name}</Heading>
-        <PlatformIconList
-          platforms={game.parent_platforms.map((p) => p.platform)}
-        ></PlatformIconList>
+        <HStack justifyContent="space-between">
+          <PlatformIconList
+            platforms={game.parent_platforms.map((p) => p.platform)}
+          ></PlatformIconList>
+          <MetacriticScore score={game.metacritic} />
+        </HStack>
       </CardBody>
     </Card>
   );
