@@ -26,7 +26,7 @@ const GameCard = ({ game }: Props) => {
         borderRadius={10}
       />
 
-      <CardBody height={["5%"]}>
+      <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
         <HStack justifyContent="space-between">
           <PlatformIconList
