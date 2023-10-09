@@ -33,6 +33,7 @@ const GameCard = ({ game }: Props) => {
             platforms={game.parent_platforms.map((p) => p.platform)}
           ></PlatformIconList>
           <MetacriticScore score={game.metacritic} />
+          {/* <Text>{game.genres.map((list) => list)}</Text> */}
         </HStack>
       </CardBody>
     </Card>
