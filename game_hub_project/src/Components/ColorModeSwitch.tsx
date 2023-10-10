@@ -4,7 +4,11 @@ const ColorModeSwitch = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Switch isChecked={colorMode === "dark"} onChange={toggleColorMode}>
+    <Switch
+      id="themeSwitch"
+      isChecked={colorMode === "dark"}
+      onChange={toggleColorMode}
+    >
       {colorMode === "dark" ? "Dark Mode" : "Light Mode"}
     </Switch>
   );

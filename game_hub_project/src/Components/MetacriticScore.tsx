@@ -6,7 +6,7 @@ interface Props {
 
 const MetacriticScore = ({ score }: Props) => {
   let color =
-    score > 75 ? "green" : score > 60 ? "yellow" : score > 50 ? "red" : "";
+    score > 80 ? "green" : score > 60 ? "yellow" : score > 20 ? "red" : "";
 
   return (
     <Badge colorScheme={color} paddingX={2} paddingY={1} borderRadius={4}>
