@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 
 interface FetchResponse<T> {
     count: number;
@@ -12,7 +12,7 @@ interface FetchResponse<T> {
 
 // Generic type param == T
 // Just symbol to fill in the spot that will be filled with specific call/service type
-const useGenres = <T>(endpoint: string) => {
+const useGenres = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +22,7 @@ const useGenres = <T>(endpoint: string) => {
 
     setIsLoading(true);
     apiClient
-      .get<FetchResponse<T>>(endpoint, { signal: controller.signal})
+      .get<FetchResponse<T>>(endpoint, { ...requestConfig, signal: controller.signal})
       .then((res) => {
         setData(res.data.results);
         setIsLoading(false);})
@@ -32,7 +32,7 @@ const useGenres = <T>(endpoint: string) => {
         setIsLoading(false)});
 
     return () => controller.abort();
-  }, [])
+  }, deps ? [...deps] : [])
 
 //   (error === "canceled" ? setError("") : error)
 
