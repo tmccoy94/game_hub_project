@@ -1,5 +1,6 @@
 import useData from "./useData";
 import { Genre } from "./useGenres";
+import { Platform } from "./usePlaforms";
 
 interface platform {
     id: number;
@@ -22,7 +23,7 @@ interface Game {
 // 3 - The useData function takes in the two optional arguments
 // The two optional arguments are: genre param for URL
 // and the dependency for when the API is called using the useEffect hook (see useData file for exact deets)
-const useGames = (selectedGenre: Genre | null) => useData<Game>("/games", {params: { genres: selectedGenre?.id}}, [selectedGenre?.id])
+const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => useData<Game>("/games", {params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id}}, [selectedGenre?.id, selectedPlatform?.id])
 
 export {type platform, type Game};
 
