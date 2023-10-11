@@ -7,6 +7,8 @@ import { Genre } from "../hooks/useGenres";
 import { Platform } from "../hooks/usePlaforms";
 import { GameQuery } from "../App";
 
+q;
+
 interface Props {
   gameQuery: GameQuery;
 }

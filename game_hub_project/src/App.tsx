@@ -8,6 +8,8 @@ import { Genre } from "./hooks/useGenres";
 import PlatformsDropdownSelector from "./components/PlatformsDropdownSelector";
 import { Platform } from "./hooks/usePlaforms";
 
+q;
+
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
