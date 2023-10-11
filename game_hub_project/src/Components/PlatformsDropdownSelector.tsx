@@ -10,7 +10,8 @@ import {
   MenuOptionGroup,
   MenuDivider,
 } from "@chakra-ui/react";
-import { BiSolidChevronDownCircle } from "react-icons/bi";
+import { BsChevronDown } from "react-icons/bs";
+// import { BiSolidChevronDownCircle } from "react-icons/bi";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
@@ -27,9 +28,9 @@ const PlatformsDropdownSelector = ({ onSelectPlatform }: Props) => {
         <MenuButton
           marginY={3}
           as={Button}
-          rightIcon={<BiSolidChevronDownCircle />}
+          rightIcon={<BsChevronDown />}
         >
-          Platforms
+          Select Platform
         </MenuButton>
         <MenuList>
           {data.map((platform) => (

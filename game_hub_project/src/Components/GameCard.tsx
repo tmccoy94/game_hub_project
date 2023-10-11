@@ -5,9 +5,6 @@ import {
   Image,
   CardBody,
   Heading,
-  AspectRatio,
-  Text,
-  list,
   HStack,
 } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
@@ -30,7 +27,7 @@ const GameCard = ({ game }: Props) => {
         <Heading fontSize="2xl">{game.name}</Heading>
         <HStack justifyContent="space-between">
           <PlatformIconList
-            platforms={game.parent_platforms.map((p) => p.platform)}
+            platforms={game.parent_platforms ? game.parent_platforms.map((p) => p.platform) : null}
           ></PlatformIconList>
           <MetacriticScore score={game.metacritic} />
           {/* <Text>{game.genres.map((list) => list)}</Text> */}
