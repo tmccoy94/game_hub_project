@@ -26,7 +26,7 @@ const PlatformsDropdownSelector = ({ onSelectPlatform }: Props) => {
     <>
       <Menu>
         <MenuButton
-          marginY={3}
+          marginY={1}
           as={Button}
           rightIcon={<BsChevronDown />}
         >

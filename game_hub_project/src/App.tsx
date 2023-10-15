@@ -55,12 +55,21 @@ function App() {
           />
           <SortSelector onSelectSort={(order) => setGameQuery({...gameQuery, order})}/>
           <Show below="lg">
-            <GenreSelector 
+          <Show breakpoint='(min-width: 550px)'>
+          <GenreSelector 
             onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} 
             selectedGenre={gameQuery.genre}
             />
-          </Show>
+          </Show>            
+        </Show>
         </HStack>
+        <Show breakpoint='(max-width: 550px)'>
+          <GenreSelector 
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} 
+            selectedGenre={gameQuery.genre}
+            marginBottom={2}
+            />
+          </Show>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
