@@ -7,14 +7,14 @@ const NavBar = () => {
   return (
     <>
     <Show above="md">
-    <HStack display="flex" justifyContent="space-between">
+    <HStack>
       <Image src={logo} boxSize={50} />
-      <SearchInput minWidth={500}/>      
+      <SearchInput/>      
       <ColorModeSwitch />      
     </HStack>
     </Show>
     <Show below="md">
-    <HStack display="flex" justifyContent="space-between">
+    <HStack >
       <Image src={logo} boxSize={50} />
       <SearchInput />  
     </HStack>
