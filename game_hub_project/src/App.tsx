@@ -9,6 +9,7 @@ import PlatformsDropdownSelector from "./components/PlatformsDropdownSelector";
 import { Platform } from "./hooks/usePlaforms";
 import SortSelector from "./components/SortSelector";
 import GenreSelector from "./components/GenreSelector";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -51,6 +52,7 @@ function App() {
 
       <GridItem area="main">
         <Show breakpoint="(min-width: 650px)">
+          <GameHeading gameQuery={gameQuery} />
           <HStack>
             <PlatformsDropdownSelector
               onSelectPlatform={(platform) =>
