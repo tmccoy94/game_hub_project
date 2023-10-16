@@ -12,6 +12,7 @@ const SearchInput = ({ onSearch, minWidth, paddingX }: Props) => {
   return (
     <div style={{ flex: "1" }}>
       <form
+        id="SearchForm"
         onSubmit={(event) => {
           event.preventDefault();
           if (ref.current) onSearch(ref.current.value);
@@ -23,6 +24,7 @@ const SearchInput = ({ onSearch, minWidth, paddingX }: Props) => {
             children={<BsSearch />}
           />
           <Input
+            name="gameSearch"
             ref={ref}
             borderRadius={20}
             focusBorderColor="blue.100"

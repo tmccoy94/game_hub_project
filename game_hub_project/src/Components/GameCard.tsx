@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { type Game } from "../hooks/useGames";
-import {
-  Card,
-  Image,
-  CardBody,
-  Heading,
-  HStack,
-} from "@chakra-ui/react";
+import { Card, Image, CardBody, Heading, HStack } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import MetacriticScore from "./MetacriticScore";
 import getCroppedImageUrl from "../services/image-url";
@@ -23,15 +17,21 @@ const GameCard = ({ game }: Props) => {
         borderRadius={10}
       />
 
-      <CardBody>
-        <Heading fontSize="2xl">{game.name}</Heading>
+      <CardBody minH="145px">
         <HStack justifyContent="space-between">
           <PlatformIconList
-            platforms={game.parent_platforms ? game.parent_platforms.map((p) => p.platform) : null}
+            platforms={
+              game.parent_platforms
+                ? game.parent_platforms.map((p) => p.platform)
+                : null
+            }
           ></PlatformIconList>
           <MetacriticScore score={game.metacritic} />
           {/* <Text>{game.genres.map((list) => list)}</Text> */}
         </HStack>
+        <Heading fontSize="2xl" paddingY={2}>
+          {game.name}
+        </Heading>
       </CardBody>
     </Card>
   );
