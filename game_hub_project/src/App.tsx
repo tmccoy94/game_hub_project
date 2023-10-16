@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Button, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
@@ -14,14 +14,15 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   order: string | null;
+  searchText: string;
 }
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   useEffect(() => {
-    console.log(gameQuery)
-  })
+    console.log(gameQuery);
+  });
 
   return (
     <Grid
@@ -35,7 +36,9 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar></NavBar>
+        <NavBar
+          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+        ></NavBar>
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" pl={1} pr={5}>
@@ -47,29 +50,88 @@ function App() {
       </Show>
 
       <GridItem area="main">
-        <HStack>
-          <PlatformsDropdownSelector
-            onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
-            }
-          />
-          <SortSelector onSelectSort={(order) => setGameQuery({...gameQuery, order})}/>
-          <Show below="lg">
-          <Show breakpoint='(min-width: 550px)'>
-          <GenreSelector 
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} 
-            selectedGenre={gameQuery.genre}
+        <Show breakpoint="(min-width: 650px)">
+          <HStack>
+            <PlatformsDropdownSelector
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
             />
-          </Show>            
+            <Show above="lg">
+              <SortSelector
+                onSelectSort={(order) => setGameQuery({ ...gameQuery, order })}
+              />
+              <Button
+                onClick={() =>
+                  setGameQuery({
+                    genre: null,
+                    platform: null,
+                    order: null,
+                    searchText: "",
+                  })
+                }
+              >
+                Clear Filters
+              </Button>
+            </Show>
+
+            <Show below="lg">
+              <SortSelector
+                onSelectSort={(order) => setGameQuery({ ...gameQuery, order })}
+              />
+              <GenreSelector
+                onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+                selectedGenre={gameQuery.genre}
+              />
+              <Button
+                onClick={() =>
+                  setGameQuery({
+                    genre: null,
+                    platform: null,
+                    order: null,
+                    searchText: "",
+                  })
+                }
+              >
+                Clear Filters
+              </Button>
+            </Show>
+          </HStack>
         </Show>
-        </HStack>
-        <Show breakpoint='(max-width: 550px)'>
-          <GenreSelector 
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} 
-            selectedGenre={gameQuery.genre}
-            marginBottom={2}
+        <Show breakpoint="(max-width: 650px)">
+          <HStack>
+            <PlatformsDropdownSelector
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
+              width="60%"
             />
-          </Show>
+            <SortSelector
+              onSelectSort={(order) => setGameQuery({ ...gameQuery, order })}
+              width="40%"
+            />
+          </HStack>
+          <HStack marginBottom={2}>
+            <GenreSelector
+              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+              selectedGenre={gameQuery.genre}
+              width="100%"
+            />
+            <Button
+              onClick={() =>
+                setGameQuery({
+                  genre: null,
+                  platform: null,
+                  order: null,
+                  searchText: "",
+                })
+              }
+              width="100%"
+            >
+              Clear Filters
+            </Button>
+          </HStack>
+        </Show>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>

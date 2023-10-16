@@ -15,9 +15,10 @@ import { BsChevronDown } from "react-icons/bs";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
+  width?: number | string;
 }
 
-const PlatformsDropdownSelector = ({ onSelectPlatform }: Props) => {
+const PlatformsDropdownSelector = ({ onSelectPlatform, width }: Props) => {
   const { data, error } = usePlatforms();
 
   if (error) return null;
@@ -29,6 +30,7 @@ const PlatformsDropdownSelector = ({ onSelectPlatform }: Props) => {
           marginY={1}
           as={Button}
           rightIcon={<BsChevronDown />}
+          width={width}
         >
           Select Platform
         </MenuButton>

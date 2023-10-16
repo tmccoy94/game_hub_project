@@ -19,9 +19,15 @@ interface Props {
   onSelectGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
   marginBottom?: number;
+  width?: number | string;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre, marginBottom }: Props) => {
+const GenreList = ({
+  onSelectGenre,
+  selectedGenre,
+  marginBottom,
+  width,
+}: Props) => {
   const { data, error, isLoading } = useGenres();
   return (
     <div>
@@ -30,24 +36,23 @@ const GenreList = ({ onSelectGenre, selectedGenre, marginBottom }: Props) => {
         <Spinner />
       ) : (
         <Menu>
-        <MenuButton
-          marginBottom={marginBottom}
-          as={Button}
-          rightIcon={<BsChevronDown />}
-        >
-          Select Genre
-        </MenuButton>
-        <MenuList>
-          {data.map((genre) => (
-            <MenuItem
-              onClick={() => onSelectGenre(genre)}
-              key={genre.id}
-            >
-              {genre.name}
-            </MenuItem>
-          ))}
-        </MenuList>
-      </Menu>)}
+          <MenuButton
+            width={width}
+            marginBottom={marginBottom}
+            as={Button}
+            rightIcon={<BsChevronDown />}
+          >
+            Select Genre
+          </MenuButton>
+          <MenuList>
+            {data.map((genre) => (
+              <MenuItem onClick={() => onSelectGenre(genre)} key={genre.id}>
+                {genre.name}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+      )}
     </div>
   );
 };

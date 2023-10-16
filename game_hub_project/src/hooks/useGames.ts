@@ -24,7 +24,7 @@ interface Game {
 // 3 - The useData function takes in the two optional arguments
 // The two optional arguments are: genre param for URL
 // and the dependency for when the API is called using the useEffect hook (see useData file for exact deets)
-const useGames = (gameQuery: GameQuery) => useData<Game>("/games", {params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id, ordering: gameQuery.order}}, [gameQuery])
+const useGames = (gameQuery: GameQuery) => useData<Game>("/games", {params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id, ordering: gameQuery.order, search: gameQuery.searchText}}, [gameQuery])
 
 export {type platform, type Game};
 
