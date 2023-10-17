@@ -121,7 +121,7 @@ function App() {
               width="40%"
             />
           </HStack>
-          <HStack marginBottom={2}>
+          <HStack marginBottom={4}>
             <GenreSelector
               onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
               selectedGenre={gameQuery.genre}
