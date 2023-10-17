@@ -16,6 +16,7 @@ interface Game {
     parent_platforms: { platform: platform }[];
     metacritic: number;
     genres: string[];
+    rating_top: number;
   }
 // You'll have to check the useData hook for where these go directly
 // So in summary:
